@@ -3,6 +3,11 @@ from django.http import HttpResponse
 from operator import truediv
 
 def _color(color):
+    try:
+        color = int(color)
+    except ValueError:
+        color = 0
+
     if color < 0:
         color = 0
     elif color > 255:
@@ -13,10 +18,10 @@ def overlay(request):
     height = int(request.GET.get('height', 10))
     if height > 500:
         height = 500
-    r = _color(int(request.GET.get('r', 255)))
-    g = _color(int(request.GET.get('g', 0)))
-    b = _color(int(request.GET.get('b', 0)))
-    a = _color(int(request.GET.get('a', 255)))
+    r = _color(request.GET.get('r', 0))
+    g = _color(request.GET.get('g', 0))
+    b = _color(request.GET.get('b', 0))
+    a = _color(request.GET.get('a', 255))
 
     s = ['1']
     for i in range(height - 1):
