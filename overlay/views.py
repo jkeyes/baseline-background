@@ -1,3 +1,5 @@
+from datetime import datetime
+from datetime import timedelta
 import png
 from django.http import HttpResponse
 from operator import truediv
@@ -14,6 +16,13 @@ def _color(color):
         color = 255
     return color
 
+def _far_future_expire(response):
+    now = datetime.now()
+    next_year = now + timedelta(days=365)
+    year_seconds = 60 * 60 * 24 * 365;
+    response['Expires'] = next_year.strftime("%a, %d %b %Y %H:%M:%S +0000")
+    response['Cache-Control'] = 'public,max-age=%d' % year_seconds
+         
 def overlay(request):
     height = int(request.GET.get('h', 10))
     if height > 500:
@@ -30,6 +39,7 @@ def overlay(request):
     palette = [ (0,0,0,0), (r,g,b,a) ]
 
     response = HttpResponse(mimetype="image/png")
+    _far_future_expire(response)
     w = png.Writer(1, height, palette=palette, bitdepth=1)
     w.write(response, s)
     return response
