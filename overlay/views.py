@@ -40,6 +40,6 @@ def overlay(request):
 
     response = HttpResponse(mimetype="image/png")
     _far_future_expire(response)
-    w = png.Writer(1, height, palette=palette, bitdepth=1)
+    w = png.Writer(2, height, palette=palette, bitdepth=1)
     w.write(response, s)
     return response
