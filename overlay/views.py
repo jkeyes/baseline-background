@@ -32,9 +32,9 @@ def overlay(request):
     b = _color(request.GET.get('b', 0))
     a = _color(request.GET.get('a', 255))
 
-    s = ['1']
+    s = ['10']
     for i in range(height - 1):
-        s.insert(0, '0')
+        s.insert(0, '00')
 
     palette = [ (0,0,0,0), (r,g,b,a) ]
 
