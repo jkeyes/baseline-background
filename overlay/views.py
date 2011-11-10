@@ -15,7 +15,7 @@ def _color(color):
     return color
 
 def overlay(request):
-    height = int(request.GET.get('height', 10))
+    height = int(request.GET.get('h', 10))
     if height > 500:
         height = 500
     r = _color(request.GET.get('r', 0))
