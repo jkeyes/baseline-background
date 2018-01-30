@@ -1,7 +1,6 @@
-Django==1.6.5
-gevent==1.0.1
-greenlet==0.4.2
-gunicorn==18.0
-psycopg2==2.5.3
-pypng==0.0.17
-wsgiref==0.1.2
+Django==2.0.1
+gevent==1.2.2
+greenlet==0.4.12
+gunicorn==19.7.1
+pypng==0.0.18
+pytz==2017.3

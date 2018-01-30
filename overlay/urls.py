@@ -1,5 +1,5 @@
-from django.conf.urls import patterns, include, url
-
-urlpatterns = patterns('',
-    url(r'^$', 'overlay.views.overlay', name='home')
-)
+from django.conf.urls import include, url
+from overlay import views
+urlpatterns = [
+    url(r'^$', views.overlay, name='home')
+]

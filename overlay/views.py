@@ -44,7 +44,7 @@ def overlay(request):
 
     palette = [ (0,0,0,0), (r,g,b,a) ]
 
-    response = HttpResponse(mimetype="image/png")
+    response = HttpResponse(content_type="image/png")
     _far_future_expire(response)
     w = png.Writer(space, height, palette=palette, bitdepth=1)
     w.write(response, s)
